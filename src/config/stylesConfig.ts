@@ -23,12 +23,16 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${colorList.darkGray};
-    width: 100vw;
+    width: 1920px;
     height: 1553px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 820px) {
+      width: 100%;
+    }
   }
   #root {
     width: 100%;

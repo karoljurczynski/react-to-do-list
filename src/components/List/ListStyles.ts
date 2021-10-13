@@ -18,7 +18,14 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${colorList.gray}
+  background-color: ${colorList.gray};
+
+  @media (max-width: 1200px) {
+    width: 800px;
+  }
+  @media (max-width: 820px) {
+    width: 100%;
+  }
 `;
 export const TopSection = styled.section`
   display: flex;
@@ -27,6 +34,10 @@ export const TopSection = styled.section`
   align-items: center;
   margin: 0 38px 11px 36px;
   border-bottom: 4px solid ${colorList.orange};
+
+  @media (max-width: 1200px) {
+    width: 100%;
+  }
 `;
 export const ListNameInput = styled.input`
   display: block;
@@ -40,9 +51,17 @@ export const ListNameInput = styled.input`
   margin-top: 36px;
   margin-bottom: 61px;
   border-radius: 8px;
+  
+  @media (max-width: 1200px) {
+    width: 92%;
+  }
+  @media (max-width: 820px) {
+    width: 85%;
+  }
 `;
 export const MainSection = styled.main`
   width: 100%;
+
 `;
 export const ButtonsSection = styled.section`
   padding: 16px 23px 16px 0;
@@ -51,7 +70,6 @@ export const ButtonsSection = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-
 `;
 export const BottomSection = styled.section`
   position: absolute;
@@ -61,6 +79,11 @@ export const BottomSection = styled.section`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 820px) {
+    justify-content: space-around;
+    align-items: flex-end;
+  }
 `;
 export const Task = styled.p`
   display: flex;
@@ -104,4 +127,11 @@ export const TaskNameInput = styled.input`
   font-size: 24px;
   line-height: 28px;
   border-bottom: 1px solid ${colorList.orange};
+
+  @media (max-width: 1200px) {
+    width: 92%;
+  }
+  @media (max-width: 820px) {
+    width: 85%;
+  }
 `;

@@ -27,6 +27,11 @@ export const Wrapper = styled.div`
   background-color: ${colorList.gray};
   border-radius: 8px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  
+  @media (max-width: 1200px) {
+    width: 100%;
+    height: 800px;
+  }
 `;
 export const Heading = styled.h2<HeadingProps>`
   color: ${colorList.orange};
@@ -37,6 +42,15 @@ export const Heading = styled.h2<HeadingProps>`
   ${({ loginWindow }) => loginWindow && `
     margin: 70px 0 187px;
   `};
+
+  @media (max-width: 1200px) {
+    font-size: 42px;
+    margin: 78px 0 80px;
+  }
+  @media (max-width: 820px) {
+    font-size: 28px;
+    margin: 50px 0 60px;
+  }
 `;
 export const Form = styled.form`
   display: flex;
@@ -50,6 +64,11 @@ export const BackButton = styled.button`
   background: transparent;
   top: 54px;
   left: 45px;
+  
+  @media (max-width: 1200px) {
+    top: 25px;
+    left: 20px;
+  }
 `;
 export const BackArrow = styled.img`
   width: 100%;
@@ -60,4 +79,8 @@ export const Text = styled.p`
   font-weight: 400;
   line-height: 1;
   font-size: 24px;
+  
+  @media (max-width: 1200px) {
+    font-size: 20px;
+  }
 `;

@@ -19,7 +19,6 @@ import { ListInterface, TaskInterface } from "../../redux/reducers/listReducer";
 
 const Dashboard: React.FC = (): JSX.Element => {
 
-  // first breakpoint - 1170px
 
   // STATE
 
@@ -27,6 +26,8 @@ const Dashboard: React.FC = (): JSX.Element => {
   const state: StateInterface = useSelector((store: StateInterface) => store);
   const setState: Dispatch<any> = useDispatch<Dispatch<any>>();
   const [searchBar, setSearchBar]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
+  const [lastSortType, setLastSortType]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
+  const [isSortDescending, setIsSortDescending]: [boolean, React.Dispatch<SetStateAction<boolean>>] = useState<boolean>(false);
   const [isSortMenuEnabled, setIsSortMenuEnabled]: [boolean, React.Dispatch<SetStateAction<boolean>>] = useState<boolean>(false);
   const [filteredLists, setFilteredLists]: [ListInterface[], React.Dispatch<SetStateAction<ListInterface[]>>] = useState<ListInterface[]>(state.lists);
   const [selectedList, setSelectedList]: [ListInterface | undefined, React.Dispatch<SetStateAction<ListInterface | undefined>>] = useState<ListInterface | undefined>(undefined);
@@ -135,13 +136,25 @@ const Dashboard: React.FC = (): JSX.Element => {
   }
   const sortListsByName = (): void => {
     let sortedLists: ListInterface[] = [];
-    sortedLists = filteredLists.sort((a, b) => a.name.localeCompare(b.name));
+    isSortDescending
+    ? sortedLists = filteredLists.sort((a, b) => b.name.localeCompare(a.name))
+    : sortedLists = filteredLists.sort((a, b) => a.name.localeCompare(b.name));
     setFilteredLists(sortedLists);
+    setLastSortType("name");
   }
   const sortListsByDate = (): void => {
     let sortedLists: ListInterface[] = [];
-    sortedLists = filteredLists.sort((a, b) => a.creationDate.localeCompare(b.creationDate));
+    isSortDescending
+    ? sortedLists = filteredLists.sort((a, b) => b.creationDate.localeCompare(a.creationDate))
+    : sortedLists = filteredLists.sort((a, b) => a.creationDate.localeCompare(b.creationDate));
     setFilteredLists(sortedLists);
+    setLastSortType("date");
+  }
+  const setSortDirection = (): void => {
+    setIsSortDescending(!isSortDescending);
+    lastSortType === "name"
+    ? sortListsByName()
+    : sortListsByDate();
   }
   
 
@@ -180,8 +193,8 @@ const Dashboard: React.FC = (): JSX.Element => {
 
       <TopSection>
         <Search type="text" placeholder="Search" value={ searchBar } onChange={ handleSearch }></Search>
+        <SortIcon src={ triangle } onClick={ setSortDirection } isSortDescending={ isSortDescending } />
         <Sort onClick={ openSortMenu }>
-          <SortIcon src={ triangle } />
           Sort by
           { isSortMenuEnabled &&
             <>

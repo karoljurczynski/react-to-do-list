@@ -14,6 +14,9 @@ interface TextProps {
 interface SortProps {
   child?: boolean;
 }
+interface SortIconProps {
+  isSortDescending?: boolean;
+}
 
 
 // STYLES
@@ -23,6 +26,12 @@ export const Wrapper = styled.div`
   position: absolute;
   width: 1175px;
   top: 180px;
+  @media (max-width: 1200px) {
+    width: 800px;
+  }
+  @media (max-width: 820px) {
+    width: 100%;
+  }
 `;
 export const TopSection = styled.section`
   display: flex;
@@ -30,6 +39,10 @@ export const TopSection = styled.section`
   justify-content: space-between;
   width: 100%;
   margin-bottom: 77px;
+
+  @media (max-width: 820px) {
+    margin-bottom: 42px;
+  }
 `;
 export const MainSection = styled.section`
   position: relative;
@@ -45,6 +58,10 @@ export const Search = styled.input`
   border-radius: 8px;
   :hover {
     filter: brightness(0.9);
+  }
+
+  @media (max-width: 820px) {
+    width: 40%;
   }
 `;
 export const Sort = styled.div<SortProps>`
@@ -67,7 +84,7 @@ export const Sort = styled.div<SortProps>`
     position: absolute;
     z-index 3;
     :hover {
-        right: -5px;
+        left: -5px;
       }
     :first-of-type {
       bottom: -110%;
@@ -77,7 +94,7 @@ export const Sort = styled.div<SortProps>`
     }
   `}
 `;
-export const SortIcon = styled.img`
+export const SortIcon = styled.img<SortIconProps>`
   display: block;
   position: absolute;
   z-index: 5;
@@ -86,6 +103,10 @@ export const SortIcon = styled.img`
   width: 28px;
   height: auto;
   cursor: pointer;
+
+  ${({ isSortDescending }) => isSortDescending && `
+    transform: rotate(180deg);
+  `}
 `;
 export const AddButton = styled.button`
   position: absolute;
@@ -105,8 +126,15 @@ export const AddButton = styled.button`
   :hover {
     background-color: ${colorList.gray};
   }
+
+  @media (max-width: 1200px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 export const AddIcon = styled.img`
+  width: 85%;
+  height: auto;
 `;
 export const ToDoList = styled.ul`
   position: relative;
@@ -136,6 +164,10 @@ export const ToDoList = styled.ul`
   :hover {
     filter: brightness(1.1);
   }
+
+  @media (max-width: 1200px) {
+    margin: 15px 0; 
+  }
 `;
 export const Text = styled.p<TextProps>`
   font-weight: 400;
@@ -144,15 +176,28 @@ export const Text = styled.p<TextProps>`
 
   ${({type}) => type === "listName" && `
     font-weight: 700;
+    text-align: left;
+    margin-left: 30px;
+    width: 25%;
   `};
   ${({type}) => type === "listDate" && `
     font-style: italic;
+    text-align: left;
+    width: 30%;
   `};
+
+  @media (max-width: 1200px) {
+    font-size: 18px;
+  }
+  @media (max-width: 820px) {
+    font-size: 14px;
+  }
 `;
 export const ListStats = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 35%;
-  justify-content: space-between;
+  width: 50%;
+  margin-right: 30px;
+  justify-content: space-around;
 `;

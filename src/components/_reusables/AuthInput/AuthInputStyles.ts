@@ -20,9 +20,14 @@ export const StyledAuthInput = styled.input`
   font-weight: 300;
   padding: 11px 18px;
   margin-bottom: 36px;
-
+  
   :last-of-type {
     margin-bottom: 0;
+  }
+
+  @media (max-width: 820px) {
+    width: 100%;
+    font-size: 14px;
   }
 `;
 

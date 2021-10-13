@@ -85,6 +85,10 @@ const StyledButton = styled.button<StyledButtonProps>`
       ::after { opacity: 0 }
     }
   `};
+
+  @media (max-width: 820px) {
+    font-size: 28px;
+  }
 `;
 
 

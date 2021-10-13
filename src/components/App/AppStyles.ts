@@ -26,11 +26,25 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 40px;
   width: 100%;
+
+  @media (max-width: 1200px) {
+    padding: 30px;
+  }
+  @media (max-width: 820px) {
+    padding: 20px;
+  }
 `;
 export const LogoutButton = styled.button`
   height: 85px;
   background-color: transparent;
   cursor: pointer;
+
+  @media (max-width: 1200px) {
+    height: 60px;
+  }
+  @media (max-width: 820px) {
+    height: 42px;
+  }
 `;
 export const LogoutIcon = styled.img`
   width: auto;
@@ -43,4 +57,10 @@ export const Heading = styled.h1`
   color: ${colorList.orange};
   line-height: 1;
 
+  @media (max-width: 1200px) {
+    font-size: 54px;
+  }
+  @media (max-width: 820px) {
+    font-size: 36px;
+  }
 `;
