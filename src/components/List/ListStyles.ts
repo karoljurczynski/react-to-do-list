@@ -25,6 +25,8 @@ export const Wrapper = styled.div`
   }
   @media (max-width: 820px) {
     width: 100%;
+    margin-top: 0;
+    height: fit-content;
   }
 `;
 export const TopSection = styled.section`
@@ -81,8 +83,9 @@ export const BottomSection = styled.section`
   justify-content: space-between;
 
   @media (max-width: 820px) {
-    justify-content: space-around;
-    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+    margin-top: 50px;
   }
 `;
 export const Task = styled.p`

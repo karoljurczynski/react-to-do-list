@@ -87,6 +87,8 @@ const StyledButton = styled.button<StyledButtonProps>`
   `};
 
   @media (max-width: 820px) {
+    margin-right: 10px;
+    margin-left: 10px;
     font-size: 28px;
   }
 `;

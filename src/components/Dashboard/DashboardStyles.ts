@@ -26,11 +26,12 @@ export const Wrapper = styled.div`
   position: absolute;
   width: 1175px;
   top: 180px;
+
   @media (max-width: 1200px) {
-    width: 800px;
+    width: 900px;
   }
   @media (max-width: 820px) {
-    width: 100%;
+    width: 95%;
   }
 `;
 export const TopSection = styled.section`
@@ -79,6 +80,11 @@ export const Sort = styled.div<SortProps>`
   line-height: 28px;
   font-weight: 300;
   color: ${colorList.black};
+  
+  @media (max-width: 820px) {
+    font-size: 18px;
+    width: 40%;
+  }
 
   ${({ child }) => child && `
     position: absolute;
@@ -91,6 +97,10 @@ export const Sort = styled.div<SortProps>`
     }
     :last-of-type {
       bottom: -220%;
+    }
+
+    @media (max-width: 820px) {
+      width: 100%;
     }
   `}
 `;
@@ -107,6 +117,10 @@ export const SortIcon = styled.img<SortIconProps>`
   ${({ isSortDescending }) => isSortDescending && `
     transform: rotate(180deg);
   `}
+  @media (max-width: 820px) {
+    right: 30%;
+    width: 25px;
+  }
 `;
 export const AddButton = styled.button`
   position: absolute;

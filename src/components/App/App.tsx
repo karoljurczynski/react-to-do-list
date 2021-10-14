@@ -6,8 +6,8 @@ import Dashboard from "../Dashboard/Dashboard";
 import { Wrapper, Header, Heading, LogoutButton, LogoutIcon } from "./AppStyles";
 import logout from "../../images/logout.png";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsLogged, setToken } from "../../redux/actions/userActions";
 import { Dispatch } from "redux";
+import { setIsLogged, setToken } from "../../redux/actions/userActions";
 import { StateInterface } from "../../redux/store/reduxStore";
 
 

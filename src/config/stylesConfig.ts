@@ -4,9 +4,6 @@
 import { createGlobalStyle } from 'styled-components';
 import colorList from './colorList';
 
-export const portal: HTMLElement = document.querySelector("#portal") as HTMLElement;
-export const root: HTMLElement = document.querySelector("#root") as HTMLElement;
-
 
 // STYLES
 
@@ -23,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${colorList.darkGray};
-    width: 1920px;
+    width: 100vw;
     height: 1553px;
     display: flex;
     flex-direction: row;
@@ -32,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
 
     @media (max-width: 820px) {
       width: 100%;
+      height: fit-content;
     }
   }
   #root {
@@ -55,8 +53,9 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 
-
-// EXPORT
+// EXPORTS
 
 
 export default GlobalStyle;
+export const portal: HTMLElement = document.querySelector("#portal") as HTMLElement;
+export const root: HTMLElement = document.querySelector("#root") as HTMLElement;

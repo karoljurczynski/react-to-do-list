@@ -34,7 +34,7 @@ const AuthWindow: React.FC = (): JSX.Element => {
   // EFFECTS
 
   
-  // Updates cookies after changing login states
+  // Updates cookies to keep login state after website refresh
   useEffect(() => {
     if (document.cookie.includes("token") && JSON.parse(document.cookie).token.length) {
       setState(setToken(JSON.parse(document.cookie).token));

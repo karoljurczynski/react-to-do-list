@@ -31,6 +31,7 @@ export const Wrapper = styled.div`
   @media (max-width: 1200px) {
     width: 100%;
     height: 800px;
+    margin-top: 90px;
   }
 `;
 export const Heading = styled.h2<HeadingProps>`
