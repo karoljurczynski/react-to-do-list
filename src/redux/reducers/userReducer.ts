@@ -12,7 +12,7 @@ export interface UserInterface {
 
 export const userReducer = (state: UserInterface, action: any): UserInterface => {
   switch (action.type) {
-    case "SET_IS_LOGGED": return {...state, isLogged: !state.isLogged};
+    case "SET_IS_LOGGED": return {...state, isLogged: action.isLogged};
     case "SET_TOKEN": return {...state, token: action.newToken};
     default: return {...state};
   }

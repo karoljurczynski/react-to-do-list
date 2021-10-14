@@ -1,14 +1,15 @@
 // IMPORTS
 
 
-import React, { SetStateAction, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import AuthInput from "../_reusables/AuthInput/AuthInput";
 import Button from "../_reusables/Button/Button";
 import { Wrapper, Heading, Form, Text, BackButton, BackArrow } from "./AuthWindowStyles";
 import back from '../../images/back.png';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setIsLogged, setToken } from "../../redux/actions/userActions";
 import { Dispatch } from "redux";
+import { StateInterface } from "../../redux/store/reduxStore";
 
 
 // COMPONENT
@@ -21,12 +22,27 @@ const AuthWindow: React.FC = (): JSX.Element => {
 
 
   const setState: Dispatch<any> = useDispatch();
+  const state: StateInterface = useSelector((store: StateInterface) => store);
   const [isLoginWindow, setIsLoginWindow]: [boolean, React.Dispatch<SetStateAction<boolean>>] = useState<boolean>(true);
   const [login, setLogin]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
   const [identifier, setIdentifier]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
   const [password, setPassword]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
   const [email, setEmail]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
   const [confirmPassword, setConfirmPassword]: [string, React.Dispatch<SetStateAction<string>>] = useState<string>("");
+
+
+  // EFFECTS
+
+  
+  // Updates cookies after changing login states
+  useEffect(() => {
+    if (document.cookie.includes("token") && JSON.parse(document.cookie).token.length) {
+      setState(setToken(JSON.parse(document.cookie).token));
+      setState(setIsLogged(true));
+    }
+    else
+      document.cookie = JSON.stringify(state.user);
+  }, [state.user])
 
 
   // ASYNC FUNCTIONS
@@ -50,7 +66,7 @@ const AuthWindow: React.FC = (): JSX.Element => {
       if (data.status === 200 && data.ok) {
         const user: any = await data.json();
         setState(setToken(user.jwt));
-        setState(setIsLogged());
+        setState(setIsLogged(true));
       }
       else {
         throw new Error("Invalid data!");
@@ -79,7 +95,7 @@ const AuthWindow: React.FC = (): JSX.Element => {
       if (data.status === 200 && data.ok) {
         const user: any = await data.json();
         setState(setToken(user.jwt));
-        setState(setIsLogged());
+        setState(setIsLogged(true));
       }
       else {
         throw new Error("Invalid data!");
@@ -143,7 +159,6 @@ const AuthWindow: React.FC = (): JSX.Element => {
 
   return (
     <Wrapper>
-
 
       { isLoginWindow
 
@@ -211,7 +226,6 @@ const AuthWindow: React.FC = (): JSX.Element => {
           </>
       }
 
-      
     </Wrapper>
   )
 }

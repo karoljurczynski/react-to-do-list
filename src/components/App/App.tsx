@@ -28,8 +28,9 @@ const App: React.FC = (): JSX.Element => {
 
 
   const handleLogOut = (): void => {
-    setState(setIsLogged());
+    setState(setIsLogged(false));
     setState(setToken(""));
+    document.cookie = JSON.stringify({ token: "", isLogged: false });
   }
 
 
